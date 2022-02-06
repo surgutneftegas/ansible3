@@ -1,3 +1,4 @@
 ---
 apache_conf_path: /var/www/html/index.html
-ansible_fact: ansible_facts.services['httpd.service'].state
+ansible_fact: ansible_facts.services['httpd.service']
+#ansible_fact: ansible_facts.services['httpd.service'].state
