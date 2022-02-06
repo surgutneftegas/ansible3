@@ -1,2 +1,44 @@
 ---
-# tasks file for inshttpd
+#var setup
+- name: Include file vars
+  include_vars: Redhat.yaml
+
+# setup tasks
+- import_tasks: setup-apache.yaml
+
+- name: Install httpd
+  yum:
+    name: httpd
+    state: latest
+    
+- name: disalble Selinux
+  selinux:
+    state: disabled
+
+- name: Check for apache status
+  service_facts:
+    
+- name: See fact for apache
+  debug:
+    msg: "{{ ansible_fact }}"
+
+- name: copy index test page
+  template:
+    src: "files/index.html.j2"
+    dest: "{{ apache_conf_path }}"
+  notify:
+    - start Apache
+
+- name: Install firewalld
+  yum:
+    name: firewalld
+    state: latest
+
+- name: enable 80
+  firewalld:
+    zone: public
+    port: 80/tcp
+    state: enabled
+    permanent: true
+  notify:
+    - restart firewalld
