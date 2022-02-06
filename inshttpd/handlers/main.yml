@@ -1,11 +1,11 @@
 ---
 # handlers file for inshttpd
 
-#- name: start Apache
-#  service:
-#    name: httpd
-#    enabled: yes
-#    state: restarted
+- name: start Apache
+  service:
+    name: httpd
+    enabled: yes
+    state: started
 
 - name: restart firewalld
   service:
@@ -13,10 +13,9 @@
     enabled: yes
     state: restarted
 
-- name: start Apache
+- name: restart Apache
   systemd:
     name: httpd
     state: restarted
-  when:
-    services_state.ansible_facts.services['httpd.service'].state == 'running'
+
 

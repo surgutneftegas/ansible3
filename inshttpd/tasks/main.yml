@@ -7,6 +7,8 @@
   yum:
     name: httpd
     state: latest
+  notify:
+    - start apache
     
 - name: disalble Selinux
   selinux:
@@ -24,7 +26,7 @@
     src: "files/index.html.j2"
     dest: "{{ apache_conf_path }}"
   notify:
-    - start Apache
+    - restart Apache
 
 - name: Install firewalld
   yum:
