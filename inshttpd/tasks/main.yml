@@ -3,9 +3,6 @@
 - name: Include file vars
   include_vars: Redhat.yaml
 
-# setup tasks
-- import_tasks: setup-apache.yaml
-
 - name: Install httpd
   yum:
     name: httpd
