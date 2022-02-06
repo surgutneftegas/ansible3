@@ -1,6 +1,6 @@
 ---
 - name: playbook1
-  hosts: servers
+  hosts: server1
   user: ansible
   become: yes
   become_method: sudo
