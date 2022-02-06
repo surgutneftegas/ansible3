@@ -1,6 +1,5 @@
 ---
 # handlers file for inshttpd
----
 
 #- name: start Apache
 #  service:
