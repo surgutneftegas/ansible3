@@ -19,7 +19,7 @@
     
 - name: See fact for apache
   debug:
-    msg: "{{ ansible_facts.services['httpd.service'].state }}"
+    msg: "{{ ansible_facts.services }}"
 
 - name: copy index test page
   template:
@@ -41,7 +41,3 @@
     permanent: true
   notify:
     - restart firewalld
-    
-- name: See fact for apache after
-  debug:
-    msg: "{{ ansible_facts.services['httpd.service'].state }}"
