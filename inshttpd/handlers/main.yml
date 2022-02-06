@@ -1,12 +1,6 @@
 ---
 # handlers file for inshttpd
 
-- name: start apache
-  service:
-    name: httpd
-    enabled: yes
-    state: started
-
 - name: restart firewalld
   service:
     name: firewalld
