@@ -1,7 +1,7 @@
 ---
 # handlers file for inshttpd
 
-- name: start Apache
+- name: start apache
   service:
     name: httpd
     enabled: yes
@@ -13,7 +13,7 @@
     enabled: yes
     state: restarted
 
-- name: restart Apache
+- name: restart apache
   systemd:
     name: httpd
     state: restarted

@@ -26,7 +26,7 @@
     src: "files/index.html.j2"
     dest: "{{ apache_conf_path }}"
   notify:
-    - restart Apache
+    - restart apache
 
 - name: Install firewalld
   yum:
