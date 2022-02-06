@@ -19,4 +19,4 @@
     state: restarted
   when:
     services_state.ansible_facts.services['httpd.service'].state == 'running'
-  ignore_errors: yes
+
