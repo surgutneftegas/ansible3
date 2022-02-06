@@ -1,0 +1,52 @@
+---
+- name: playbook1
+  hosts: servers
+  user: ansible
+  become: yes
+  become_method: sudo
+  become_user: root
+
+  tasks:
+    - name: Install httpd
+      yum:
+        name: httpd
+        state: latest
+    
+    - name: disalble Selinux
+      selinux:
+        state: disabled
+  
+    - name: start apache
+      service:
+        name: httpd
+        state: started
+  
+    - name: Check for apache status
+      service_facts:
+    
+    - name: See fact for apache
+      debug:
+        msg: "{{ ansible_facts.services['httpd.service'].state }}"
+            
+    - name: copy index test page
+      template:
+        src: "files/index.html.j2"
+        dest: "/var/www/html/index.html"
+
+    - name: Install firewalld
+      yum:
+        name: firewalld
+        state: latest
+            
+    - name: start Apache
+      service:
+        name: httpd
+        state: started
+
+    - name: enable 80
+      firewalld:
+        zone: public
+        port: 80/tcp
+        state: enabled
+        permanent: true
+
