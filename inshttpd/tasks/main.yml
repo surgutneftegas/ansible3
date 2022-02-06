@@ -19,7 +19,7 @@
     
 - name: See fact for apache
   debug:
-    msg: "{{ ansible_facts.services }}"
+    msg: "{{ ansible_facts.services['httpd.service'] }}"
 
 - name: copy index test page
   template:
