@@ -7,16 +7,3 @@
     persistent: yes
 
 
-- name: Check if ftp_home_dir exists
-  shell: getsebool -a | grep '^ftp_home_dir\b'
-  register: var_exists
-  failed_when: false
-  changed_when: false
-  tags: vsftpd
-
-
-- name: Allow access to home directories
-  seboolean:
-    name: ftp_home_dir
-    state: yes
-    persistent: yes
