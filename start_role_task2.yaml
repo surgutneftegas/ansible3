@@ -1,0 +1,9 @@
+---
+- name: playbook1
+  hosts: server1
+  user: ansible
+  become: yes
+  become_method: sudo
+  become_user: root
+  roles:
+    - vsftpd
