@@ -1,7 +1,7 @@
 ---
 # tasks file for vsftpd
-- name: Include file vars
-  include_vars: default.yaml
+#- name: Include file vars
+#  include_vars: default.yaml
 
 - name: Install Vsftpd
   package:
