@@ -1,0 +1,13 @@
+---
+
+- name: Allow full read/write access through SELinux for el7+
+  seboolean:
+    name: ftpd_full_access
+    state: yes
+    persistent: yes
+
+- name: Allow access to home directories
+  seboolean:
+    name: ftp_home_dir
+    state: yes
+    persistent: yes

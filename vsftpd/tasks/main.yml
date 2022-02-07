@@ -1,2 +1,38 @@
 ---
 # tasks file for vsftpd
+- name: Include file vars
+  include_vars: default.yaml
+
+- name: Install Vsftpd
+  package:
+    name: vsftpd
+    state: present
+
+###  
+- include_tasks: selinux.yml
+
+
+- name: Ensure `anon_root` exists
+  file:
+    path: /var/ftp/pub
+    state: directory
+    owner: root
+    group: root
+    mode: 777
+    setype: public_content_t
+
+- name: Install configuration file
+  template:
+    src:   etc_vsftpd_vsftpd.conf.j2
+    dest: /etc/vsftpd/vsftpd.conf
+    mode: '0600'
+  notify: restart vsftpd
+
+###
+
+- name: Ensure service is started
+  service:
+    name: vsftpd
+    state: started
+    enabled: true
+  
