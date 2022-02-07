@@ -9,7 +9,7 @@
     state: present
 
 ###  
-- include_tasks: selinux.yml
+- include_tasks: selinux.yaml
 
 
 - name: Ensure `anon_root` exists
