@@ -2,4 +2,6 @@
 # defaults file for vsftpd
 vsftpd_package: vsftpd
 
+vsftpd_service_state: started
+
 ftp_dir_path: /var/ftp/pub
