@@ -5,3 +5,8 @@
   service:
     name: vsftpd
     state: restarted
+  when: vsftpd_service_state != 'stopped'
+  ignore_errors: yes
+
+- name: run restorecon
+  command: restorecon -v /var/ftp/pub

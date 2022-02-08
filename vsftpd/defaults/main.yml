@@ -1,2 +1,5 @@
 ---
 # defaults file for vsftpd
+vsftpd_package: vsftpd
+
+ftp_dir_path: /var/ftp/pub

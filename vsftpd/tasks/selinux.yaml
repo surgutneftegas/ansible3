@@ -1,9 +1,0 @@
----
-
-- name: Allow full read/write access through SELinux for el7+
-  seboolean:
-    name: ftpd_full_access
-    state: yes
-    persistent: yes
-
-

@@ -1,0 +1,26 @@
+---
+
+- name: Configuring vsftpd
+  template:
+    src: vsftpd.conf.j2
+    dest: "{{ vsftpd_config_template_path }}"
+    group: root
+    owner: root
+    mode: "0644"
+  notify: restart vsftpd
+
+- name: Setting SELinux booleans
+  seboolean:
+    name: ftpd_anon_write
+    state: yes
+    persistent: yes
+  when:
+    - ansible_selinux.status == "enabled" 
+
+- name: SELinux context
+  sefcontext:
+      target: "{{ ftp_dir_path }}"
+      setype: public_content_rw_t
+      state: present
+#  notify:
+#      - run restorecon
