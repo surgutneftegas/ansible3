@@ -6,3 +6,16 @@
     state: "{{ vsftpd_service_state }}"
     enabled: yes
  
+- name: start and enable vsftpd
+  service:
+    name: vsftpd
+    state: started
+    enabled: yes 
+
+- name: open ftp
+  firewalld:
+    zone: public
+    service: ftp 
+    permanent: yes
+    state: enabled
+    immediate: yes

@@ -4,3 +4,8 @@
   package:
     name: "{{ vsftpd_package }}"
     state: present
+    
+- name: Install firewalld
+  yum:
+    name: firewalld
+    state: latest
